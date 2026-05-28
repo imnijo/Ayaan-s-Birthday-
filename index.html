@@ -1,47 +1,300 @@
+Here is the modified standalone HTML file. The interactive opening animations, shake transitions, card reveal, rising movement, and background particle elements have been converted entirely from JavaScript into **pure CSS animations** using @keyframes, 3D transforms, and CSS custom properties (var()).
+This modification eliminates the platform-specific layout blocking and ensures fluid execution across **all desktop and mobile web browsers**, including iOS Safari on iPhones.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Ayaan!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Arial', sans-serif;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        h1 {
-            color: #764ba2;
-            font-size: 3em;
-            margin: 0;
-            animation: bounce 1s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        p {
-            color: #333;
-            font-size: 1.2em;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+<title>Ayaan's 5th Birthday</title>
+<meta property="og:type"               content="website">
+<meta property="og:title"              content="🎉 You're Invited — Ayaan's 5th Birthday!">
+<meta property="og:description"        content="Avengers Assemble! Join us for Ayaan's Epic 5th Birthday Bash — June 7, 2026 at 5:30 PM. Pool party after dinner! 🦸‍♂️🎂">
+<meta property="og:image"              content="data:image/png;base64,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`">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body, html {
+    width: 100%; height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #0d1117; color: #fff; overflow-x: hidden;
+  }
+
+  /* Main Viewport Container */
+  .viewport-container {
+    position: relative; width: 100%; height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    background: radial-gradient(circle at center, #1f293d 0%, #0d1117 100%);
+    overflow: hidden;
+  }
+
+  /* CSS-Driven Simulated Particle & Confetti Layer */
+  .animation-canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1;
+  }
+  .animation-canvas::before, .animation-canvas::after {
+    content: ''; position: absolute; width: 100%; height: 100%;
+    background-image: 
+      radial-gradient(circle, rgba(240,165,0,0.6) 2px, transparent 3px),
+      radial-gradient(circle, rgba(255,215,0,0.4) 4px, transparent 5px),
+      radial-gradient(circle, rgba(192,57,43,0.5) 3px, transparent 4px);
+    background-size: 15% 15%, 20% 25%, 25% 20%;
+    animation: rainConfetti 6s linear infinite;
+  }
+  .animation-canvas::after {
+    background-size: 18% 22%, 24% 18%, 15% 30%;
+    animation-delay: 3s; animation-duration: 4.5s;
+  }
+
+  @keyframes rainConfetti {
+    0% { background-position: 0% 0%, 0% 0%, 0% 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { background-position: 10% 100%, -20% 100%, 15% 100%; opacity: 0; }
+  }
+
+  /* Interactive Trigger Envelope (Replaces JS Click Actions) */
+  #envelope-trigger { display: none; }
+
+  .envelope-wrapper {
+    position: relative; width: 340px; height: 480px;
+    cursor: pointer; perspective: 1000px; z-index: 5;
+    transform: scale(1); transition: transform 0.3s ease;
+  }
+  .envelope-wrapper:hover { transform: scale(1.02); }
+
+  /* Envelope Body Structure */
+  .envelope-box {
+    position: absolute; width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1e222b 0%, #15181f 100%);
+    border: 3px solid #f0a500; border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 20px rgba(240,165,0,0.1);
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; padding: 30px; text-align: center;
+    transform-style: preserve-3d; backface-visibility: hidden;
+  }
+
+  /* Pulse Ripple Effects around the Front Logo */
+  .badge-container {
+    position: relative; margin-bottom: 25px;
+  }
+  .badge-ring {
+    position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border: 2px solid rgba(240,165,0,0.4); border-radius: 50%;
+    animation: pulseRing 2s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+  }
+  .badge-ring:nth-child(2) { animation-delay: 0.5s; }
+  .badge-ring:nth-child(3) { animation-delay: 1s; }
+
+  @keyframes pulseRing {
+    0% { transform: scale(0.6); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+  }
+
+  .main-badge {
+    width: 110px; height: 110px; background: #c0392b;
+    border-radius: 50%; border: 4px solid #f0a500;
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: 0 10px 20px rgba(192,57,43,0.5);
+    font-size: 42px; position: relative; z-index: 2;
+  }
+
+  .envelope-title {
+    font-size: 26px; color: #f0a500; font-weight: 800;
+    letter-spacing: 1px; margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  .envelope-subtitle {
+    font-size: 14px; color: #8a99ad; margin-bottom: 30px;
+  }
+
+  .action-hint {
+    font-size: 13px; color: #fff; background: rgba(240,165,0,0.2);
+    padding: 10px 24px; border-radius: 30px; border: 1px dashed #f0a500;
+    animation: bounceText 1.6s infinite ease-in-out;
+  }
+
+  @keyframes bounceText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Full Screen Overlay System */
+  .invitation-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 14, 22, 0.96); z-index: 10;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; justify-content: center; align-items: center;
+  }
+
+  /* CSS State Mapping: When Envelope Checkbox is Checked */
+  #envelope-trigger:checked ~ .envelope-wrapper {
+    animation: shakeBlast 0.6s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  #envelope-trigger:checked ~ .invitation-overlay {
+    opacity: 1; pointer-events: auto;
+  }
+
+  @keyframes shakeBlast {
+    10%, 90% { transform: translate3d(-2px, 0, 0) scale(0.98); }
+    20%, 80% { transform: translate3d(4px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-6px, 0, 0) scale(1.03); }
+    40%, 60% { transform: translate3d(6px, 0, 0); }
+  }
+
+  /* The Risen Invitation Card */
+  .inv-card {
+    width: 360px; max-width: 92%; background: #161b22;
+    border-radius: 20px; border: 2px solid #f0a500;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(240,165,0,0.15);
+    overflow: hidden; position: relative;
+    transform: translateY(100vh) scale(0.7); opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.15), opacity 0.5s ease;
+  }
+
+  /* Trigger Rising Animation when checked */
+  #envelope-trigger:checked ~ .invitation-overlay .inv-card {
+    transform: translateY(0) scale(1); opacity: 1;
+    transition-delay: 0.4s;
+  }
+
+  /* Ambient Card Shimmer/Sheen Overlay */
+  .inv-card::after {
+    content: ''; position: absolute; top: -50%; left: -60%;
+    width: 200%; height: 200%;
+    background: linear-gradient(115deg, transparent 40%, rgba(255,215,0,0.08) 50%, transparent 60%);
+    animation: cardShimmer 6s infinite linear; pointer-events: none;
+  }
+
+  @keyframes cardShimmer {
+    0% { transform: translate(-30%, -30%); }
+    100% { transform: translate(30%, 30%); }
+  }
+
+  /* Card Interior Aesthetics */
+  .card-banner {
+    background: linear-gradient(135deg, #c0392b 0%, #8e1c10 100%);
+    padding: 35px 20px; text-align: center; border-bottom: 3px solid #f0a500;
+  }
+  .card-banner h1 {
+    font-size: 28px; font-weight: 900; color: #fff;
+    letter-spacing: 1px; text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+    margin-bottom: 4px;
+  }
+  .card-banner p {
+    color: #ffd700; font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 2px;
+  }
+
+  .card-body {
+    padding: 30px 24px; text-align: center;
+  }
+  .avengers-tag {
+    color: #e74c3c; font-weight: 800; font-size: 15px;
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px;
+  }
+  .invite-msg {
+    font-size: 15px; color: #c9d1d9; line-height: 1.6; margin-bottom: 25px;
+  }
+  .invite-msg strong { color: #fff; }
+
+  /* Data Section Blocks */
+  .details-grid {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(240,165,0,0.2);
+    border-radius: 12px; padding: 20px; margin-bottom: 25px;
+    display: flex; flex-direction: column; gap: 15px;
+  }
+  .detail-row {
+    display: flex; align-items: flex-start; text-align: left; gap: 15px;
+  }
+  .detail-icon {
+    font-size: 22px; width: 30px; text-align: center; flex-shrink: 0;
+  }
+  .detail-txt h4 {
+    font-size: 12px; text-transform: uppercase; color: #8a99ad;
+    letter-spacing: 1px; margin-bottom: 2px;
+  }
+  .detail-txt p {
+    font-size: 15px; color: #f0a500; font-weight: 600; line-height: 1.3;
+  }
+  .detail-txt span {
+    font-size: 13px; color: #8a99ad; font-weight: 400; display: block; margin-top: 2px;
+  }
+
+  /* Close Controls */
+  .close-area {
+    display: inline-block; cursor: pointer; color: #8a99ad;
+    font-size: 14px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; padding: 10px 20px; border-radius: 8px;
+    transition: background 0.2s, color 0.2s; margin-top: 5px;
+  }
+  .close-area:hover {
+    background: rgba(255,255,255,0.05); color: #fff;
+  }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>🎉 Happy Birthday Ayaan! 🎉</h1>
-        <p>Wishing you an amazing day filled with joy and celebration!</p>
+
+<div class="viewport-container">
+  <input type="checkbox" id="envelope-trigger">
+
+  <div class="animation-canvas"></div>
+
+  <label for="envelope-trigger" class="envelope-wrapper">
+    <div class="envelope-box">
+      <div class="badge-container">
+        <div class="badge-ring"></div>
+        <div class="badge-ring"></div>
+        <div class="badge-ring"></div>
+        <div class="main-badge">🦸‍♂️</div>
+      </div>
+      <h2 class="envelope-title">AYAAN IS TURNING 5!</h2>
+      <p class="envelope-subtitle">You have received a classified transmission</p>
+      <div class="action-hint">TAP TO ASSEMBLE</div>
     </div>
+  </label>
+
+  <div class="invitation-overlay">
+    <div class="inv-card">
+      <div class="card-banner">
+        <h1>AYAAN'S 5TH BIRTHDAY</h1>
+        <p>Official Birthday Bash Bash</p>
+      </div>
+      
+      <div class="card-body">
+        <div class="avengers-tag">Avengers Assemble!</div>
+        <p class="invite-msg">
+          Calling all Earth's Mightiest Heroes! Join us for an epic celebration honoring <strong>Ayaan's 5th Birthday Journey</strong>. Gear up for a legendary night!
+        </p>
+
+        <div class="details-grid">
+          <div class="detail-row">
+            <div class="detail-icon">📅</div>
+            <div class="detail-txt">
+              <h4>When</h4>
+              <p>June 7, 2026</p>
+              <span>Starting at 5:30 PM CST</span>
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-icon">🎂</div>
+            <div class="detail-txt">
+              <h4>Mission Plan</h4>
+              <p>Dinner &amp; Celebrations</p>
+              <span>Followed immediately by a Pool Party!</span>
+            </div>
+          </div>
+        </div>
+
+        <label for="envelope-trigger" class="close-area">Dismiss Transmission</label>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
+
+```
